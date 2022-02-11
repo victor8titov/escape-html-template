@@ -1,0 +1,17 @@
+.button {
+  @include font-primary;
+  @include regular-shadow;
+  @include transition;
+
+  padding: $base*3 $base*7.5;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  color: $secondary;
+  background-color: $info;
+  border: none;
+  border-radius: $base*0.75;
+
+  &:hover {
+    background-color: $primary;
+  }
+}

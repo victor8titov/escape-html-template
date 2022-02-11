@@ -1,0 +1,171 @@
+.navigation {
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: start;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    list-style-type: none;
+
+    & + & {
+      @media (min-width: $sm) {
+        margin-left: $base*2;
+      }
+    }
+
+    a {
+      @include font-primary;
+
+      padding: $base*5 $base*1.25;
+      font-size: 1.2rem;
+      line-height: 2rem;
+      color: $secondary;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.header__navigation {
+  margin-right: $base*6;
+
+  @media (min-width: $sm) {
+    margin-right: 0;
+  }
+
+  ul {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    flex-direction: column;
+    background-color: rgb(255 255 255 / 95%);
+
+    @media (min-width: $sm) {
+      position: static;
+      flex-direction: row;
+      background-color: inherit;
+    }
+  }
+
+  .navigation__wrapper-item {
+    display: none;
+
+    @media (min-width: $sm) {
+      display: block;
+    }
+  }
+
+  .navigation__item:first-of-type {
+    margin-top: $base*20;
+
+    @media (min-width: $sm) {
+      margin-top: 0;
+    }
+  }
+
+  .navigation__wrapper-button {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+
+    @media (min-width: $sm) {
+      display: none;
+    }
+
+    button {
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      outline: none;
+    }
+
+    & > button,
+    & > button::before,
+    & > button::after {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: $white;
+      transition-duration: 0.25s;
+    }
+
+    & > button::before {
+      top: -8px;
+      content: "";
+    }
+
+    & > button::after {
+      top: 8px;
+      content: "";
+    }
+  }
+
+  .navigation__item {
+    display: inline-block;
+    margin-top: $base*2;
+
+    @media (min-width: $sm) {
+      margin-top: 0;
+    }
+
+    a {
+      @include font-primary;
+
+      padding-top: $base*6;
+      padding-bottom: $base*6;
+      font-size: 3rem;
+      line-height: 5rem;
+      color: $gray-800;
+
+      @media (min-width: $sm) {
+        padding: $base*5 $base*1.25;
+        font-size: 1.2rem;
+        line-height: 2rem;
+        color: $secondary;
+      }
+    }
+  }
+
+  &_active {
+    .navigation__wrapper-item {
+      display: block;
+    }
+
+    .navigation__wrapper-button {
+      & > button,
+      & > button::before,
+      & > button::after {
+        background-color: $black;
+      }
+
+      & > button {
+        transform: rotate(45deg);
+      }
+
+      & > button::before {
+        top: 0;
+        transform: rotate(0);
+      }
+
+      & > button::after {
+        top: 0;
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.footer {
+  width: 100%;
+  background-image: url("/assets/pic/footer_fon.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+
+  @media (min-width: $lg) {
+    background-size: cover;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  &__feedback {
+    height: 288px;
+    border: 1px solid red;
+  }
+
+  &__navigation-logo {
+    width: 100%;
+    background-color: rgba($gray-700, 0.6);
+  }
+
+  &__navigation-logo-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: $base*22.5;
+  }
+}

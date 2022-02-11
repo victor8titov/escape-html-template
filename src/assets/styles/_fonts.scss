@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&display=swap");
+
+@mixin font-primary {
+  font-family: Oxygen, sans-serif;
+}
+
+@mixin font-secondary {
+  font-family: Lora, serif;
+}
+
+h1 {
+  @include font-secondary;
+
+  font-size: 5rem;
+  line-height: 5rem;
+  color: $white;
+}
+
+h2 {
+  @include font-primary;
+
+  font-size: 2rem;
+  line-height: 2.7rem;
+  color: $gray-800;
+}
+
+h3 {
+  @include font-secondary;
+
+  font-size: 1.6rem;
+  line-height: 2.1rem;
+}
+
+p {
+  @include font-primary;
+
+  font-size: 1.3rem;
+  color: $gray-300;
+}

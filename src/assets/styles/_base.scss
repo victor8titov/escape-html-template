@@ -1,0 +1,24 @@
+html {
+  font-size: 10px;
+}
+
+.wrapper {
+  margin: 0 $base*2;
+
+  @media (min-width: $sm) {
+    width: $base*125;
+    margin: 0 auto;
+  }
+
+  @media (min-width: $md) {
+    width: $base*175;
+  }
+
+  @media (min-width: $lg) {
+    width: $base*235;
+  }
+}
+
+.b {
+  border: 1px solid red;
+}

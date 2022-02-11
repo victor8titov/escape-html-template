@@ -1,0 +1,60 @@
+.header {
+  width: 100%;
+  background-image: url("/assets/pic/header_fon.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+
+  @media (min-width: $lg) {
+    background-size: cover;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-areas:
+      "logo nav nav nav"
+      "title title title title"
+      "button button button button";
+    grid-template-rows: 74px 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+
+    @media (min-width: $lg) {
+      grid-template-areas:
+        "logo . nav nav"
+        "title title title title"
+        ". button button .";
+    }
+  }
+
+  &__logo {
+    grid-area: logo;
+    justify-self: start;
+  }
+
+  &__navigation {
+    grid-area: nav;
+    justify-self: end;
+  }
+
+  &__title {
+    grid-area: title;
+    text-align: center;
+
+    h1 {
+      margin-bottom: $base*5;
+    }
+  }
+
+  &__description {
+    @include font-primary;
+
+    font-size: 1.7rem;
+    line-height: 2rem;
+    color: rgb(255 255 255 / 60%);
+  }
+
+  &__button {
+    grid-area: button;
+  }
+}
