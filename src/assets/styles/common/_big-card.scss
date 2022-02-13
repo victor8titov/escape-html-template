@@ -1,0 +1,77 @@
+.big-card {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: end;
+  width: 100%;
+  max-width: $base * 115;
+  min-height: $base * 70;
+  padding-right: $base * 4;
+  padding-bottom: $base * 3.75;
+  padding-left: $base * 4;
+  overflow: hidden;
+  border-radius: $border-radius-regular;
+
+  &__flag {
+    position: absolute;
+    top: $base * 5;
+    left: $base * 5;
+    z-index: $z-index-surface;
+    padding: $base * 1.5  $base * 2.25;
+    background-color: $info;
+    border-radius: $border-radius-regular;
+
+    span {
+      @include font-primary;
+
+      font-size: 1.2rem;
+      line-height: 1.3rem;
+      color: $secondary;
+      text-transform: uppercase;
+    }
+  }
+
+  &__main-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: $z-index-bottom;
+    width: 100%;
+    min-height: $base * 70;
+    background-color: $gray-500;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  &__body {
+    position: relative;
+    z-index: $z-index-middle;
+  }
+
+  &__body-title {
+    @include font-secondary;
+
+    font-size: 2.7rem;
+    color: $white;
+  }
+
+  &__body-text {
+    margin-bottom: $base * 3;
+    font-size: 1.4rem;
+  }
+
+  &__footer {
+    position: relative;
+    z-index: $z-index-middle;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    span {
+      font-size: 1.2rem;
+    }
+  }
+}

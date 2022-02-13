@@ -1,0 +1,45 @@
+.regular-card {
+  width: 100%;
+  max-width: $base * 74;
+  min-height: $base * 73.75;
+  background-color: $secondary;
+
+  &__main-image {
+    width: 100%;
+    max-height: $base * 37.5;
+    object-fit: cover;
+  }
+
+  &__title,
+  &__text {
+    padding-right: $base * 3.25;
+    padding-left: $base * 3.25;
+  }
+
+  &__title {
+    margin-top: $base * 3;
+    color: $gray-900;
+  }
+
+  &__text {
+    display: inline-block;
+    margin-top: $base * 1.25;
+    margin-bottom: $base * 3;
+    color: $gray-400;
+  }
+
+  &__footer {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: $base * 3 $base * 3.25;
+    border-top: 1px solid $gray-200;
+
+    span {
+      font-size: 1.2rem;
+      color: $gray-400;
+    }
+  }
+}

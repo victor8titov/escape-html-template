@@ -3,10 +3,7 @@
   background-image: url("/assets/pic/header_fon.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
-
-  @media (min-width: $lg) {
-    background-size: cover;
-  }
+  background-size: cover;
 
   &__container {
     display: grid;
@@ -42,7 +39,7 @@
     text-align: center;
 
     h1 {
-      margin-bottom: $base*5;
+      margin-bottom: $base * 5;
     }
   }
 

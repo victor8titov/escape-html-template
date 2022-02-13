@@ -19,21 +19,46 @@ h1 {
 h2 {
   @include font-primary;
 
+  position: relative;
+  display: inline-block;
+  padding-bottom: $base * 4.25;
   font-size: 2rem;
+  font-weight: 500;
   line-height: 2.7rem;
   color: $gray-800;
+  text-align: center;
+  letter-spacing: 0.3rem;
+
+  &::after {
+    position: absolute;
+    right: $base * 5;
+    bottom: 0;
+    left: -$base * 5;
+    width: calc(100% + $base * 10);
+    height: $base * 0.25;
+    content: "";
+    background-color: $gray-300;
+  }
 }
 
 h3 {
   @include font-secondary;
 
   font-size: 1.6rem;
+  font-weight: 500;
   line-height: 2.1rem;
 }
 
-p {
+p,
+span {
   @include font-primary;
 
   font-size: 1.3rem;
   color: $gray-300;
+}
+
+h3,
+p {
+  margin-top: $base * 1.5;
+  margin-bottom: $base * 1.5;
 }

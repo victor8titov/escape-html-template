@@ -1,0 +1,21 @@
+.featured-posts {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $base * 5;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    @media (min-width: $md) {
+      flex-wrap: nowrap;
+    }
+  }
+}

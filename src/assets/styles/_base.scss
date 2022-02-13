@@ -2,20 +2,35 @@ html {
   font-size: 10px;
 }
 
-.wrapper {
-  margin: 0 $base*2;
+body {
+  background-color: $gray-100;
+}
+
+section {
+  margin-bottom: $base * 5;
 
   @media (min-width: $sm) {
-    width: $base*125;
+    margin-bottom: $base * 15;
+  }
+}
+
+.wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 $base * 2;
+
+  @media (min-width: $sm) {
+    width: $base * 125;
+    padding: 0;
     margin: 0 auto;
   }
 
   @media (min-width: $md) {
-    width: $base*175;
+    width: $base * 175;
   }
 
   @media (min-width: $lg) {
-    width: $base*235;
+    width: $base * 235;
   }
 }
 

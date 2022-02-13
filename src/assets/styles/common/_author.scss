@@ -1,0 +1,30 @@
+.author {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__photo {
+    max-width: $base * 6.5;
+
+    img {
+      width: 100%;
+      border-radius: 100%;
+      object-position: center center;
+      object-fit: cover;
+    }
+  }
+
+  &__text {
+    margin-left: $base * 2.5;
+
+    span {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.regular-card__author {
+  span {
+    color: $gray-400;
+  }
+}

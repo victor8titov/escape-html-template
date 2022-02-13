@@ -1,35 +1,87 @@
 .footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   width: 100%;
   background-image: url("/assets/pic/footer_fon.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  background-size: cover;
 
-  @media (min-width: $lg) {
-    background-size: cover;
-  }
-
-  &__container {
+  &__feedback {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
   }
 
-  &__feedback {
-    height: 288px;
-    border: 1px solid red;
+  &__title {
+    padding-bottom: 0;
+    margin-top: $base * 20;
+    font-size: 2.5rem;
+    line-height: 6.7rem;
+    color: $gray-200;
+
+    &::after {
+      background-color: $gray-200;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    margin-top: $base * 5;
+    margin-bottom: $base * 22.5;
+
+    input {
+      min-width: $base * 50;
+      height: $base * 12.5;
+      padding-left: $base * 8.7;
+      margin-bottom: $base;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: $border-radius-regular;
+      outline: none;
+
+      @media (min-width: $sm) {
+        min-width: $base * 125;
+      }
+
+      @media (min-width: $md) {
+        margin-bottom: 0;
+        border-radius: 0;
+        border-top-left-radius: $border-radius-regular;
+        border-bottom-left-radius: $border-radius-regular;
+      }
+
+      &::placeholder {
+        color: $gray-600;
+      }
+    }
+
+    @media (min-width: $md) {
+      flex-direction: row;
+    }
   }
 
   &__navigation-logo {
     width: 100%;
-    background-color: rgba($gray-700, 0.6);
+    background-color: rgba($gray-800, 0.6);
   }
 
   &__navigation-logo-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    min-height: $base*22.5;
+    justify-content: space-evenly;
+    min-height: $base * 22.5;
+    margin-top: $base * 5;
+
+    @media (min-width: $sm) {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 0;
+    }
   }
 }
