@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  background-image: url("/assets/pic/header_fon.png");
+  background-image: url("/assets/pic/header_fon.webp");
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
@@ -26,12 +26,12 @@
 
   &__logo {
     grid-area: logo;
-    justify-self: start;
+    justify-self: flex-start;
   }
 
   &__navigation {
     grid-area: nav;
-    justify-self: end;
+    justify-self: flex-end;
   }
 
   &__title {

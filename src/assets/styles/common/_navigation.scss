@@ -1,9 +1,10 @@
 .navigation {
   ul {
+    z-index: $z-index-above-all;
     display: flex;
     align-items: center;
     justify-content: center;
-    justify-content: start;
+    justify-content: flex-start;
     padding: 0;
     margin: 0;
   }
@@ -32,6 +33,10 @@
         text-decoration: underline;
       }
     }
+  }
+
+  &__wrapper-button {
+    z-index: $z-index-above-all + 1;
   }
 }
 
@@ -76,7 +81,6 @@
 
   .navigation__wrapper-button {
     position: relative;
-    z-index: 1;
     display: flex;
     align-items: center;
     width: 26px;
@@ -171,8 +175,6 @@
   }
 }
 
-.footer__navigation {
-  a {
-    color: rgb(255 255 255 / 60%);
-  }
+.footer__navigation a {
+  color: rgb(255 255 255 / 60%);
 }

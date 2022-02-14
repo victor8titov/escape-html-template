@@ -9,6 +9,9 @@ const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano'); 
 const rename = require('gulp-rename'); 
 const del = require('del');
+const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
+const webp = require('gulp-webp');
 
 
 const entry = {
@@ -23,6 +26,10 @@ const entry = {
     img: {
         path: './src/assets/pic',
         filename: '*.{png,jpeg,jpg,gif}'
+    },
+    js: {
+        path: './src/assets/scripts',
+        filename: 'index.js'
     }
 };
 
@@ -91,30 +98,38 @@ async function image_task(cb) {
     await del(_output);
 
     return src(`${entry.img.path}/${entry.img.filename}`)
+        .pipe(webp())
         .pipe(dest(_output))
         .pipe(browserSync.stream());
 }
 
 function minimization_style_task() {
     
-    return src(`${output.path}/*.css`)
+    return src(`${output.path}/assets/*.css`)
     .pipe(cssnano()) 
     .pipe(rename({suffix: '.min', basename: 'main'})) 
     .pipe(dest(`${output.path}/assets/`))
 }
 
+function js_task () {
+    return src(`${entry.js.path}/${entry.js.filename}`)
+    .pipe(babel({ presets: ['@babel/env'] }))
+    .pipe(rename({basename: 'main'}))
+    .pipe(dest(`${output.path}/assets/scripts`))
+    .pipe(browserSync.stream());
+}
+
+function minimization_js() {
+    return src(`${entry.js.path}/${entry.js.filename}`)
+    .pipe(babel({ presets: ['@babel/env'] }))
+    .pipe(uglify())
+    .pipe(rename({suffix: '.min', basename: 'main'}))    
+    .pipe(dest(`${output.path}/assets/scripts`));
+}
+
 function build_styles_task() {
     return src(`${entry.scss.path}/${entry.scss.filename}`)
     .pipe(sass())
-    .pipe(stylelint({
-        fix: true, 
-        failAfterError: false,
-        reporters: [
-            {
-                formatter: 'string',
-                console: true,
-            },
-    ],}))
     .pipe(qcmq())
     .pipe(autoprefixer({cascade: false}))
     .pipe(dest(`${output.path}/assets/`))
@@ -135,9 +150,17 @@ function development_watch(cb) {
 
     watch(`${entry.scss.path}/**/*.scss`, _options, series(stylelint_task, scss_task));
     watch(`${entry.html.path}/**/${entry.html.filename}`, _options, html_task);
-    watch(`${entry.img.path}/**/${entry.img.filename}`, _options, image_task)
+    watch(`${entry.img.path}/**/${entry.img.filename}`, _options, image_task);
+    watch(`${entry.js.path}/**/*.js`, _options, js_task);
 }
 
-exports.stylelint = stylelint_task;
+function builded_watch(cb) {
+    browserSync.init({
+        server: output.path
+    })
+}
+
+exports.check = stylelint_task;
 exports.start = development_watch;
-exports.build = series([clean_output_task, parallel([html_task, image_task, series([build_styles_task, minimization_style_task])])])
+exports.build = series([clean_output_task, parallel([html_task, image_task, minimization_js, series([build_styles_task, minimization_style_task])])])
+exports.watch = builded_watch;
